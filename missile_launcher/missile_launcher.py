@@ -12,9 +12,8 @@ class Action(Enum):
     STOP = 0x20
 
 class MissileLauncher:
-    def __init__(self, usb_device=None):
-        if self.usb_device  is None:
-            self.usb_device = USBDevice()
+    def __init__(self):
+        self.usb_device = USBDevice()
 
     def up(self, milliseconds):
         self._move(Action.UP, milliseconds)

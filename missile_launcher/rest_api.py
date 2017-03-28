@@ -8,6 +8,7 @@ app = Flask(__name__)
 def fire():
     missile_launcher = MissileLauncher()
     missile_launcher.fire()
+    return "Shooting"
 
 def main():
     app.run(host='0.0.0.0', port=5000)
