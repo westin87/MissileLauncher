@@ -99,7 +99,7 @@ def documentation():
 
 
 def parse_request_data():
-    data = json.loads(request.data)
+    data = json.loads(request.data.decode())
     return data
 
 
