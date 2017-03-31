@@ -35,8 +35,8 @@ class MissileLauncher:
         self._do(Action.STOP)
 
     def reset(self):
-        self._do(Action.DOWN, 2000)
-        self._do(Action.LEFT, 8000)
+        self.down(2000)
+        self.left(8000)
 
     def execute(self, action, argument):
         if isinstance(action, str):
