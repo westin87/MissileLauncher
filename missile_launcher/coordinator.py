@@ -2,7 +2,7 @@ import json
 
 from pathlib import Path
 
-def give_me_coords(self, name):
+def give_me_coords(name):
     jsonpath = Path("/root/developers.json")
     with jsonpath.open() as fo:
         developer_list = json.load(fo)
