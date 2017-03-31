@@ -1,14 +1,17 @@
 import json
 
 from flask import Flask, request
+from flask_autodoc.autodoc import Autodoc
 
 from missile_launcher.missile_launcher import MissileLauncher
 
 app = Flask(__name__)
+auto = Autodoc(app)
 missile_launcher = MissileLauncher()
 
 
 @app.route("/fire", methods=['POST'])
+@auto.doc()
 def fire():
     data = parse_request_data()
     number_of_shots = data.get('number_of_shots', 1)
@@ -84,9 +87,15 @@ def execute():
 
     return "Turning right"
 
+
 @app.route("/ping", methods=['GET'])
 def ping():
     return "Pong"
+
+
+@app.route('/doc', methods=['GET'])
+def documentation():
+    return auto.html()
 
 
 def parse_request_data():
