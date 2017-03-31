@@ -1,4 +1,5 @@
 import imaplib
+import re
 
 from pathlib import Path
 
@@ -47,3 +48,12 @@ class MailReader:
         # Don't ask about the indexing :)
         mail_content = self._mail_server.fetch(index, '(RFC822)')[1][0][1].decode()
         return mail_content
+
+
+def get_name_from_mail(mail_content):
+    match = re.search("Change [a-z0-9]+ by (.*) \(.* ", mail_content)
+
+    if match:
+        return match.group(1)
+    else:
+        return None
