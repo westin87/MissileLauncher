@@ -1,2 +1,3 @@
 Flask
 Pyusb
+flask-autodoc
