@@ -6,7 +6,8 @@ setup(
     packages=find_packages(),
     entry_points={
         "console_scripts": [
-            "start-rest-api = missile_launcher.rest_api:main"
+            "start-rest-api = missile_launcher.rest_api:main",
+            "start-missile-launcher = missile_launcher.build_watcher:start_build_watcher"
         ]
     }
 )
