@@ -31,13 +31,14 @@ class MailReader:
         new_number_of_mails = int(new_number_of_mails)
         mail_count_file = Path("/tmp/mails")
 
-        with mail_count_file.open('r+') as file_object:
+        with mail_count_file.open('r') as file_object:
             old_number_of_mails = file_object.read()
             if old_number_of_mails == "":
                 old_number_of_mails = "0"
 
             old_number_of_mails = int(old_number_of_mails)
 
+        with mail_count_file.open('w') as file_object:
             file_object.write(str(new_number_of_mails))
 
         return old_number_of_mails != new_number_of_mails
