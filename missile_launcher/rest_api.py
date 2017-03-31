@@ -92,7 +92,7 @@ def execute():
 def add_developers():
     data = request.data.decode()
     jsonpath = Path("/root/developers.json")
-    with jsonpath.open() as fo:
+    with jsonpath.open("w") as fo:
          fo.write(data)
     return add_content_type_header(data)
 
