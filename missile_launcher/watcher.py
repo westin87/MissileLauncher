@@ -28,6 +28,7 @@ class MailWatcher:
 def start_watcher():
     watcher = MailWatcher()
     signal.signal(signal.SIGINT, watcher.stop)
+    watcher.start()
 
 
 if __name__ == '__main__':
