@@ -88,9 +88,17 @@ def execute():
 
     return "Turning right"
 
+@app.route("/developers", methods=['POST', 'PUT'])
+def add_developers():
+    data = request.data.decode()
+    jsonpath = Path("/root/developers.json")
+    with jsonpath.open() as fo:
+         fo.write(data)
+    return add_content_type_header(data)
+
 @app.route("/developers", methods=['GET'])
 def get_developers():
-    jsonpath = Path("/tmp/developers.json")
+    jsonpath = Path("/root/developers.json")
     with jsonpath.open() as fo:
         content = fo.read()
         content = add_content_type_header(content)
