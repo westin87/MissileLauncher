@@ -1,6 +1,6 @@
 import json
 
-from flask import Flask, request
+from flask import Flask, request, Response
 from flask_autodoc.autodoc import Autodoc
 from pathlib import Path
 
@@ -93,6 +93,7 @@ def get_developers():
     jsonpath = Path("/tmp/developers.json")
     with jsonpath.open() as fo:
         content = fo.read()
+        content = add_content_type_header(content)
     return content
 
 @app.route("/ping", methods=['GET'])
@@ -109,6 +110,8 @@ def parse_request_data():
     data = json.loads(request.data.decode())
     return data
 
+def add_content_type_header(content):
+    return Response(content, mimetype='application/json')
 
 def main():
     app.run(host='0.0.0.0', port=5000)
