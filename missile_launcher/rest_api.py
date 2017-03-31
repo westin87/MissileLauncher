@@ -2,6 +2,7 @@ import json
 
 from flask import Flask, request
 from flask_autodoc.autodoc import Autodoc
+from pathlib import Path
 
 from missile_launcher.missile_launcher import MissileLauncher
 
@@ -87,6 +88,12 @@ def execute():
 
     return "Turning right"
 
+@app.route("/developers", methods=['GET'])
+def get_developers():
+    jsonpath = Path("/tmp/developers.json")
+    with jsonpath.open() as fo:
+        content = fo.read()
+    return content
 
 @app.route("/ping", methods=['GET'])
 def ping():
